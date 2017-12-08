@@ -7,38 +7,67 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js" type="text/javascript" charset="utf-8"></script>
-    <style type="text/css" media="screen">
-        #editor {
-            position: absolute;
-            top: 40px;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            width: 400px;
-            height: 500px;
-        }
-        .wrapper {
-          margin-top: 20px;
-        }
-        .app-section {
-
-        }
-    </style>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <style type="text/css" media="screen">
+      body {
+        background-color: #333333;
+      }
+      #editor {
+          position: absolute;
+          top: 40px;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          width: 350px;
+          height: 300px;
+      }
+      .container {
+        margin-top: 20px;
+      }
+      .panel-default > .panel-heading {
+        background-color: #3eccb5;
+      }
+      .main.panel-default > .panel-body {
+        height: 375px;
+      }
+      .results {
+        background-color: #3eccb5;
+        color: white;
+        margin-top: 10px;
+      }
+      h1 {
+        font-family: 'Playfair Display', serif;
+        color: white;
+      }
+      .main.panel {
+        width: 70%;
+        margin: auto;
+        margin-bottom: 20px;
+      }
 
+    </style>
   </head>
   <body>
-    <div class="container wrapper">
+    <div class="container">
       <div class="row">
-        <div class="col-md-4">
-          <div>Paste Moment Data Here:</div>
-          <div id="editor"></div>
-        </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-7">
-          <button id='analyze' class='btn btn-success'>Analyze</button>
-          <div id='display'></div>
+        <div class="panel panel-default main">
+          <div class="panel-heading"><h1>Welcome to Moment Explorer</h1></div>
+          <div class="panel-body">
+            <div class="col-md-4">
+              <h5 class="subheading">Paste Moment Data Here:</h5>
+              <div id="editor">{}</div>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+              <button id='analyze' class='btn btn-success'>Analyze</button>
+              <div class="panel panel-default results">
+                <div class="panel-body results-body">
+                  <div id='display'></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -46,9 +75,13 @@
         var editor = ace.edit("editor");
         editor.setTheme("ace/theme/monokai");
         editor.getSession().setMode("ace/mode/json");
+        editor.setOptions({
+          fontSize: "13pt"
+        });
 
 
         $(document).ready(function(){
+          $(".results").hide();
           $("#analyze").click(function() {
             var jsonString = editor.getValue();
             json = JSON.parse(jsonString);
@@ -72,9 +105,9 @@
             totalUsePerYear = 0;
             totalAppUsePerYear = _.map(totalAppUsePerYear, function(days, app) {
               totalUsePerYear += days;
-              return [app, days, days.toFixed(2)];
+              return [app, days, days.toFixed(0)];
             })
-            totalUsePerYear = totalUsePerYear.toFixed(2);
+            totalUsePerYear = totalUsePerYear.toFixed(0);
 
             totalAppUsePerYear = _.filter(totalAppUsePerYear, function(appDays){
               // show any that are over 10 days
@@ -87,13 +120,15 @@
 
             $('.app-section').remove();
 
-            $('#display').append(`<div class='app-section'>All Phone Use: ${totalUsePerYear} days per year</div>`);
+            $('#display').append(`<div class='app-section'>Smartphone Use: ${totalUsePerYear} days per year</div>`);
             _.each(totalAppUsePerYear, function(appDays) {
               $('#display').append(`<div class='app-section'>${appDays[0]}: ${appDays[2]} days per year</div>`);
             });
             if (totalAppUsePerYear.length == 0) {
               $('#display').append(`<div class='app-section'>You will not spend more than 10 days per year on any app.</div>`);
             }
+            $(".results").show();
+
           });
         });
     </script>
