@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Moment Explorer</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css" media="screen">
+        #editor {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 400px;
+            height: 500px;
+        }
+        .wrapper {
+          margin-top: 20px;
+        }
+        .app-section {
+
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="container wrapper">
+      <div class="row">
+        <div class="col-md-4">
+          <div>Paste Moment Data Here:</div>
+          <div id="editor"></div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-7">
+          <button id='analyze' class='btn btn-success'>Analyze</button>
+          <div id='display'></div>
+        </div>
+      </div>
+    </div>
+    <script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode("ace/mode/json");
+
+
+        $(document).ready(function(){
+          $("#analyze").click(function() {
+            var jsonString = editor.getValue();
+            json = JSON.parse(jsonString);
+            appUsageDays = _.filter(json.days, function (day) {
+              return day.appUsages.length > 0;
+            });
+            totalAppUse = {}
+            _.each(appUsageDays, function(day) {
+              _.each(day.appUsages, function(appUsage) {
+                if(!totalAppUse.hasOwnProperty(appUsage.appName)) {
+                  totalAppUse[appUsage.appName] = 0;
+                }
+                totalAppUse[appUsage.appName] += appUsage.onScreen //Minutes
+              });
+            });
+            totalAppUsePerYear = {};
+            _.each(totalAppUse, function(value, key) {
+              totalAppUsePerYear[key] = (value * 365) / (appUsageDays.length * 60 * 24);
+            });
+
+            totalUsePerYear = 0;
+            totalAppUsePerYear = _.map(totalAppUsePerYear, function(days, app) {
+              totalUsePerYear += days;
+              return [app, days, days.toFixed(2)];
+            })
+            totalUsePerYear = totalUsePerYear.toFixed(2);
+
+            totalAppUsePerYear = _.filter(totalAppUsePerYear, function(appDays){
+              // show any that are over 10 days
+              return appDays[1] > 10;
+            })
+            totalAppUsePerYear = _.sortBy(totalAppUsePerYear, function(appDays){
+              // most to least days
+              return -appDays[1];
+            })
+
+            $('.app-section').remove();
+
+            $('#display').append(`<div class='app-section'>All Phone Use: ${totalUsePerYear} days per year</div>`);
+            _.each(totalAppUsePerYear, function(appDays) {
+              $('#display').append(`<div class='app-section'>${appDays[0]}: ${appDays[2]} days per year</div>`);
+            });
+            if (totalAppUsePerYear.length == 0) {
+              $('#display').append(`<div class='app-section'>You will not spend more than 10 days per year on any app.</div>`);
+            }
+          });
+        });
+    </script>
+  </body>
+</html>

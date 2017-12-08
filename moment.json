@@ -1,0 +1,669 @@
+{
+  "days" : [
+    {
+      "sessions" : [
+
+      ],
+      "minuteCount" : 77,
+      "pickupCount" : 58,
+      "pickups" : [
+
+      ],
+      "appUsages" : [
+
+      ],
+      "date" : "2017-11-30T00:00:00-05:00"
+    },
+    {
+      "sessions" : [
+
+      ],
+      "minuteCount" : 105,
+      "pickupCount" : 62,
+      "pickups" : [
+
+      ],
+      "appUsages" : [
+
+      ],
+      "date" : "2017-11-29T00:00:00-05:00"
+    },
+    {
+      "sessions" : [
+
+      ],
+      "minuteCount" : 18,
+      "pickupCount" : 14,
+      "pickups" : [
+
+      ],
+      "appUsages" : [
+
+      ],
+      "date" : "2017-11-28T00:00:00-05:00"
+    },
+    {
+      "sessions" : [
+
+      ],
+      "minuteCount" : 140,
+      "pickupCount" : 0,
+      "pickups" : [
+
+      ],
+      "appUsages" : [
+        {
+          "appName" : "Safari",
+          "onScreen" : 63
+        },
+        {
+          "appName" : "Home & Lock Screen",
+          "onScreen" : 14
+        },
+        {
+          "appName" : "Mail",
+          "onScreen" : 14
+        },
+        {
+          "appName" : "Fantasy",
+          "onScreen" : 9
+        },
+        {
+          "appName" : "Stream TV",
+          "onScreen" : 9
+        },
+        {
+          "appName" : "Messages",
+          "onScreen" : 8
+        },
+        {
+          "appName" : "Phone",
+          "onScreen" : 5
+        },
+        {
+          "appName" : "YouTube",
+          "onScreen" : 5
+        },
+        {
+          "appName" : "Lyft",
+          "onScreen" : 3
+        },
+        {
+          "appName" : "Gmail",
+          "onScreen" : 3
+        },
+        {
+          "appName" : "Photos",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "American",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "goPuff",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "Spotify",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "HelloFresh",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Uber",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Calendar",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Mint",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "App Store",
+          "onScreen" : 0
+        }
+      ],
+      "date" : "2017-11-27T00:00:00-05:00"
+    },
+    {
+      "sessions" : [
+
+      ],
+      "minuteCount" : 140,
+      "pickupCount" : 0,
+      "pickups" : [
+
+      ],
+      "appUsages" : [
+        {
+          "appName" : "Safari",
+          "onScreen" : 63
+        },
+        {
+          "appName" : "Home & Lock Screen",
+          "onScreen" : 14
+        },
+        {
+          "appName" : "Mail",
+          "onScreen" : 14
+        },
+        {
+          "appName" : "Fantasy",
+          "onScreen" : 9
+        },
+        {
+          "appName" : "Stream TV",
+          "onScreen" : 9
+        },
+        {
+          "appName" : "Messages",
+          "onScreen" : 8
+        },
+        {
+          "appName" : "Phone",
+          "onScreen" : 5
+        },
+        {
+          "appName" : "YouTube",
+          "onScreen" : 5
+        },
+        {
+          "appName" : "Lyft",
+          "onScreen" : 3
+        },
+        {
+          "appName" : "Gmail",
+          "onScreen" : 3
+        },
+        {
+          "appName" : "Photos",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "American",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "goPuff",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "Spotify",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "HelloFresh",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Uber",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Calendar",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Mint",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "App Store",
+          "onScreen" : 0
+        }
+      ],
+      "date" : "2017-11-26T00:00:00-05:00"
+    },
+    {
+      "sessions" : [
+
+      ],
+      "minuteCount" : 140,
+      "pickupCount" : 0,
+      "pickups" : [
+
+      ],
+      "appUsages" : [
+        {
+          "appName" : "Safari",
+          "onScreen" : 63
+        },
+        {
+          "appName" : "Home & Lock Screen",
+          "onScreen" : 14
+        },
+        {
+          "appName" : "Mail",
+          "onScreen" : 14
+        },
+        {
+          "appName" : "Fantasy",
+          "onScreen" : 9
+        },
+        {
+          "appName" : "Stream TV",
+          "onScreen" : 9
+        },
+        {
+          "appName" : "Messages",
+          "onScreen" : 8
+        },
+        {
+          "appName" : "Phone",
+          "onScreen" : 5
+        },
+        {
+          "appName" : "YouTube",
+          "onScreen" : 5
+        },
+        {
+          "appName" : "Lyft",
+          "onScreen" : 3
+        },
+        {
+          "appName" : "Gmail",
+          "onScreen" : 3
+        },
+        {
+          "appName" : "Photos",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "American",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "goPuff",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "Spotify",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "HelloFresh",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Uber",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Calendar",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Mint",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "App Store",
+          "onScreen" : 0
+        }
+      ],
+      "date" : "2017-11-25T00:00:00-05:00"
+    },
+    {
+      "sessions" : [
+
+      ],
+      "minuteCount" : 140,
+      "pickupCount" : 0,
+      "pickups" : [
+
+      ],
+      "appUsages" : [
+        {
+          "appName" : "Safari",
+          "onScreen" : 63
+        },
+        {
+          "appName" : "Home & Lock Screen",
+          "onScreen" : 14
+        },
+        {
+          "appName" : "Mail",
+          "onScreen" : 14
+        },
+        {
+          "appName" : "Fantasy",
+          "onScreen" : 9
+        },
+        {
+          "appName" : "Stream TV",
+          "onScreen" : 9
+        },
+        {
+          "appName" : "Messages",
+          "onScreen" : 8
+        },
+        {
+          "appName" : "Phone",
+          "onScreen" : 5
+        },
+        {
+          "appName" : "YouTube",
+          "onScreen" : 5
+        },
+        {
+          "appName" : "Lyft",
+          "onScreen" : 3
+        },
+        {
+          "appName" : "Gmail",
+          "onScreen" : 3
+        },
+        {
+          "appName" : "Photos",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "American",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "goPuff",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "Spotify",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "HelloFresh",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Uber",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Calendar",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Mint",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "App Store",
+          "onScreen" : 0
+        }
+      ],
+      "date" : "2017-11-24T00:00:00-05:00"
+    },
+    {
+      "sessions" : [
+
+      ],
+      "minuteCount" : 140,
+      "pickupCount" : 0,
+      "pickups" : [
+
+      ],
+      "appUsages" : [
+        {
+          "appName" : "Safari",
+          "onScreen" : 63
+        },
+        {
+          "appName" : "Home & Lock Screen",
+          "onScreen" : 14
+        },
+        {
+          "appName" : "Mail",
+          "onScreen" : 14
+        },
+        {
+          "appName" : "Fantasy",
+          "onScreen" : 9
+        },
+        {
+          "appName" : "Stream TV",
+          "onScreen" : 9
+        },
+        {
+          "appName" : "Messages",
+          "onScreen" : 8
+        },
+        {
+          "appName" : "Phone",
+          "onScreen" : 5
+        },
+        {
+          "appName" : "YouTube",
+          "onScreen" : 5
+        },
+        {
+          "appName" : "Lyft",
+          "onScreen" : 3
+        },
+        {
+          "appName" : "Gmail",
+          "onScreen" : 3
+        },
+        {
+          "appName" : "Photos",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "American",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "goPuff",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "Spotify",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "HelloFresh",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Uber",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Calendar",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Mint",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "App Store",
+          "onScreen" : 0
+        }
+      ],
+      "date" : "2017-11-23T00:00:00-05:00"
+    },
+    {
+      "sessions" : [
+
+      ],
+      "minuteCount" : 140,
+      "pickupCount" : 0,
+      "pickups" : [
+
+      ],
+      "appUsages" : [
+        {
+          "appName" : "Safari",
+          "onScreen" : 63
+        },
+        {
+          "appName" : "Home & Lock Screen",
+          "onScreen" : 14
+        },
+        {
+          "appName" : "Mail",
+          "onScreen" : 14
+        },
+        {
+          "appName" : "Fantasy",
+          "onScreen" : 9
+        },
+        {
+          "appName" : "Stream TV",
+          "onScreen" : 9
+        },
+        {
+          "appName" : "Messages",
+          "onScreen" : 8
+        },
+        {
+          "appName" : "Phone",
+          "onScreen" : 5
+        },
+        {
+          "appName" : "YouTube",
+          "onScreen" : 5
+        },
+        {
+          "appName" : "Lyft",
+          "onScreen" : 3
+        },
+        {
+          "appName" : "Gmail",
+          "onScreen" : 3
+        },
+        {
+          "appName" : "Photos",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "American",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "goPuff",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "Spotify",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "HelloFresh",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Uber",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Calendar",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Mint",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "App Store",
+          "onScreen" : 0
+        }
+      ],
+      "date" : "2017-11-22T00:00:00-05:00"
+    },
+    {
+      "sessions" : [
+
+      ],
+      "minuteCount" : 140,
+      "pickupCount" : 0,
+      "pickups" : [
+
+      ],
+      "appUsages" : [
+        {
+          "appName" : "Safari",
+          "onScreen" : 63
+        },
+        {
+          "appName" : "Home & Lock Screen",
+          "onScreen" : 14
+        },
+        {
+          "appName" : "Mail",
+          "onScreen" : 14
+        },
+        {
+          "appName" : "Fantasy",
+          "onScreen" : 9
+        },
+        {
+          "appName" : "Stream TV",
+          "onScreen" : 9
+        },
+        {
+          "appName" : "Messages",
+          "onScreen" : 8
+        },
+        {
+          "appName" : "Phone",
+          "onScreen" : 5
+        },
+        {
+          "appName" : "YouTube",
+          "onScreen" : 5
+        },
+        {
+          "appName" : "Lyft",
+          "onScreen" : 3
+        },
+        {
+          "appName" : "Gmail",
+          "onScreen" : 3
+        },
+        {
+          "appName" : "Photos",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "American",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "goPuff",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "Spotify",
+          "onScreen" : 2
+        },
+        {
+          "appName" : "HelloFresh",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Uber",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Calendar",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "Mint",
+          "onScreen" : 1
+        },
+        {
+          "appName" : "App Store",
+          "onScreen" : 0
+        }
+      ],
+      "date" : "2017-11-21T00:00:00-05:00"
+    }
+  ]
+}
