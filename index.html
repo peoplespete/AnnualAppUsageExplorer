@@ -1,36 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Moment Explorer</title>
+    <title>Annual App Usage Explorer</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
     <style type="text/css" media="screen">
       body {
         background-color: #333333;
       }
-      #editor {
-          position: absolute;
-          top: 40px;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          width: 350px;
-          height: 300px;
-      }
+
       .container {
         margin-top: 20px;
       }
       .panel-default > .panel-heading {
         background-color: #3eccb5;
       }
-      .main.panel-default > .panel-body {
-        height: 375px;
-      }
+
       .results {
         background-color: #3eccb5;
         color: white;
@@ -52,18 +41,71 @@
     <div class="container">
       <div class="row">
         <div class="panel panel-default main">
-          <div class="panel-heading"><h1>Welcome to Moment Explorer</h1></div>
+          <div class="panel-heading"><h1>Annual App Usage Explorer</h1></div>
           <div class="panel-body">
-            <div class="col-md-4">
-              <h5 class="subheading">Paste Moment Data Here:</h5>
-              <div id="editor">{}</div>
+            <div class="row">
+              <div class="col-md-12">
+                <h5>Curious how much time you spend on your smartphone annually?  Or how time on different apps adds up?</h5>
+                <h5>Pick the best way to find out:</h5>
+                <button id='ios' class='btn btn-success'>iOS</button>
+                <button id='moment' class='btn btn-success'>Moment</button>
+                <button id='rescueTime' class='btn btn-success'>RescueTime</button>
+                <div class='iosSection'>
+                  <h5>To be completed in the future.</h5>
+
+
+                </div>
+                <div class='momentSection'>
+                  <h5>
+                    Paste exported <a href="https://inthemoment.io/" target="_blank">Moment (iOS App)</a> json data below to find out:
+                  </h5>
+                  <form>
+                    <div class="form-group">
+                      <input type="textarea" class="form-control" id="momentData" placeholder="{}">
+                    </div>
+                  </form>
+                </div>
+                <div class='rescueTimeSection'>
+                  <h5 class='rescueTimeInstructions'>Navigate into the <a href="https://www.rescuetime.com" target="_blank">RescueTime (Android App)</a> on your mobile device.  Select 30 days at the top.  Select the phone at the bottom.</h5>
+                  <h5 class='iosInstructions'>Navigate into the app usage area (in your settings under battery) on your mobile device.  Select 7 days at the top.  Select the clock at the top right.</h5>
+                  <form>
+                    <div class="form-group overallUse-input">
+                      <label for="overallUse">Overall Use:</label>
+                      <input class="form-control" id="overallUse" placeholder="3d 7h 22m">
+                    </div>
+                    <div class="form-group">
+                      <label for="appUse1">1st App Use:</label>
+                      <input class="form-control" id="appName1" placeholder="Messaging">
+                      <input class="form-control" id="appUse1" placeholder="9h">
+                      <label for="appUse2">2nd App Use:</label>
+                      <input class="form-control" id="appName2" placeholder="Chrome">
+                      <input class="form-control" id="appUse2" placeholder="4h">
+                      <label for="appUse3">3rd App Use:</label>
+                      <input class="form-control" id="appName3" placeholder="Snapchat">
+                      <input class="form-control" id="appUse3" placeholder="55m">
+                      <label for="appUse4">4th App Use:</label>
+                      <input class="form-control" id="appName4" placeholder="Instagram">
+                      <input class="form-control" id="appUse4" placeholder="36m">
+                      <label for="appUse5">5th App Use:</label>
+                      <input class="form-control" id="appName5" placeholder="YouTube">
+                      <input class="form-control" id="appUse5" placeholder="12m">
+                    </div>
+                  </form>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <button id='analyze' class='btn btn-success'>Analyze</button>
+                  </div>
+                </div>
+              </div>
+
             </div>
-            <div class="col-md-2"></div>
-            <div class="col-md-6">
-              <button id='analyze' class='btn btn-success'>Analyze</button>
-              <div class="panel panel-default results">
-                <div class="panel-body results-body">
-                  <div id='display'></div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="panel panel-default results">
+                  <div class="panel-body results-body">
+                    <div id='display'></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -72,63 +114,174 @@
       </div>
     </div>
     <script>
-        var editor = ace.edit("editor");
-        editor.setTheme("ace/theme/monokai");
-        editor.getSession().setMode("ace/mode/json");
-        editor.setOptions({
-          fontSize: "13pt"
-        });
+        hideAll = function(){
+          $("#analyze, .results, .iosSection, .momentSection, .rescueTimeSection").hide();
+        }
 
+        analyzeSeveralApps = function(dayCount){
+          var appName1 = $('#appName1').val();
+          var appName2 = $('#appName2').val();
+          var appName3 = $('#appName3').val();
+          var appName4 = $('#appName4').val();
+          var appName5 = $('#appName5').val();
+
+          var appUse1MinutesPerDay = getRescueTimeMinutes($('#appUse1').val()) / dayCount
+          var appUse2MinutesPerDay = getRescueTimeMinutes($('#appUse2').val()) / dayCount
+          var appUse3MinutesPerDay = getRescueTimeMinutes($('#appUse3').val()) / dayCount
+          var appUse4MinutesPerDay = getRescueTimeMinutes($('#appUse4').val()) / dayCount
+          var appUse5MinutesPerDay = getRescueTimeMinutes($('#appUse5').val()) / dayCount
+
+          return {
+              [appName1]: appUse1MinutesPerDay,
+              [appName2]: appUse2MinutesPerDay,
+              [appName3]: appUse3MinutesPerDay,
+              [appName4]: appUse4MinutesPerDay,
+              [appName5]: appUse5MinutesPerDay,
+          }
+        }
+
+        analyzeIos = function(){
+          return {
+            total: null,
+            all: analyzeSeveralApps(7.0)
+          }
+        };
+
+        analyzeMoment = function(){
+          var jsonString = $('#momentData').val();
+          json = JSON.parse(jsonString);
+          appUsageDays = _.filter(json.days, function (day) {
+            return day.appUsages.length > 0;
+          });
+          totalAppUse = {}
+          _.each(appUsageDays, function(day) {
+            _.each(day.appUsages, function(appUsage) {
+              if(!totalAppUse.hasOwnProperty(appUsage.appName)) {
+                totalAppUse[appUsage.appName] = 0;
+              }
+              totalAppUse[appUsage.appName] += appUsage.onScreen //Minutes
+            });
+          });
+          totalAppUsePerDay = {};
+          _.each(totalAppUse, function(value, key) {
+            totalAppUsePerDay[key] = value / appUsageDays.length;
+          });
+          return {
+            total: 'sum',
+            all: totalAppUsePerDay
+          }
+        };
+
+        getRescueTimeMinutes = function(value){
+          if(value == ""){
+            return 0;
+          }
+          num = value.match(/\d+/)[0]
+          unit = value.match(/\D+/)[0]
+
+          // use unit to return minutes
+          var scale;
+          if (unit == 'd') {
+            scale = 24 * 60
+          }
+          else if (unit == 'h')
+          {
+            scale = 60
+          }
+          else if (unit == 'm')
+          {
+            scale = 1
+          }
+          return num * scale;
+        }
+
+        analyzeRescueTime = function(){
+          var overallUse = $('#overallUse').val().split(' ')
+          overallUse = _.map(overallUse, function(use){
+            return getRescueTimeMinutes(use);
+          });
+          var overallUseMinutesPerDay = _.sum(overallUse) / 30.0
+
+          return {
+            total: overallUseMinutesPerDay,
+            all: analyzeSeveralApps(30.0)
+          }
+        };
+
+        minutesPerDayToDaysPerYear = function(minutesPerDay){
+          return (minutesPerDay * 365) / (24 * 60.0);
+        }
 
         $(document).ready(function(){
-          $(".results").hide();
-          $("#analyze").click(function() {
-            var jsonString = editor.getValue();
-            json = JSON.parse(jsonString);
-            appUsageDays = _.filter(json.days, function (day) {
-              return day.appUsages.length > 0;
-            });
-            totalAppUse = {}
-            _.each(appUsageDays, function(day) {
-              _.each(day.appUsages, function(appUsage) {
-                if(!totalAppUse.hasOwnProperty(appUsage.appName)) {
-                  totalAppUse[appUsage.appName] = 0;
-                }
-                totalAppUse[appUsage.appName] += appUsage.onScreen //Minutes
-              });
-            });
-            totalAppUsePerYear = {};
-            _.each(totalAppUse, function(value, key) {
-              totalAppUsePerYear[key] = (value * 365) / (appUsageDays.length * 60 * 24);
-            });
+          hideAll();
+          var mode = '';
 
-            totalUsePerYear = 0;
-            totalAppUsePerYear = _.map(totalAppUsePerYear, function(days, app) {
-              totalUsePerYear += days;
+          $("#ios").click(function() {
+            hideAll();
+            $("#analyze, .iosInstructions").show();
+            mode = 'ios';
+            $(".overallUse-input, .rescueTimeInstructions").hide();
+            $(".rescueTimeSection").show();
+          });
+
+          $("#moment").click(function() {
+            hideAll();
+            $("#analyze").show();
+            mode = 'moment';
+            $(".momentSection").show();
+          });
+
+          $("#rescueTime").click(function() {
+            hideAll();
+            $("#analyze, .overallUse-input, .rescueTimeInstructions").show();
+            mode = 'rescueTime';
+            $(".iosInstructions").hide();
+            $(".rescueTimeSection").show();
+          });
+
+          $("#analyze").click(function() {
+            var totalAppUse = {}
+            if(mode == 'ios') {
+              totalAppUse = analyzeIos()
+            }
+            else if(mode == 'moment') {
+              totalAppUse = analyzeMoment()
+            }
+            else if(mode == 'rescueTime') {
+              totalAppUse = analyzeRescueTime();
+            }
+
+            if(totalAppUse.total == 'sum'){
+              totalAppUse.total = _.sum(_.values(totalAppUse.all))
+            }
+            totalAppUse.total = minutesPerDayToDaysPerYear(totalAppUse.total).toFixed(0)
+
+            totalAppUse.all = _.map(totalAppUse.all, function(minutes, app) {
+              days = minutesPerDayToDaysPerYear(minutes);
               return [app, days, days.toFixed(0)];
             })
-            totalUsePerYear = totalUsePerYear.toFixed(0);
 
-            totalAppUsePerYear = _.filter(totalAppUsePerYear, function(appDays){
+            totalAppUse.all = _.filter(totalAppUse.all, function(appDays){
               // show any that are over 10 days
               return appDays[1] > 10;
             })
-            totalAppUsePerYear = _.sortBy(totalAppUsePerYear, function(appDays){
+            totalAppUse.all = _.sortBy(totalAppUse.all, function(appDays){
               // most to least days
               return -appDays[1];
             })
 
             $('.app-section').remove();
-
-            $('#display').append(`<div class='app-section'>Smartphone Use: ${totalUsePerYear} days per year</div>`);
-            _.each(totalAppUsePerYear, function(appDays) {
-              $('#display').append(`<div class='app-section'>${appDays[0]}: ${appDays[2]} days per year</div>`);
+            if(totalAppUse.total != null){
+              $('#display').append(`<div class='app-section' style='font-size: ${totalAppUse.total}px'>Smartphone Use: ${totalAppUse.total} days per year</div>`);
+            }
+            _.each(totalAppUse.all, function(appDays) {
+              $('#display').append(`<div class='app-section' style='font-size: ${appDays[2]}px'>${appDays[0]}: ${appDays[2]} days per year</div>`);
             });
-            if (totalAppUsePerYear.length == 0) {
+            if (totalAppUse.all.length == 0) {
               $('#display').append(`<div class='app-section'>You will not spend more than 10 days per year on any app.</div>`);
             }
-            $(".results").show();
 
+            $(".results").show();
           });
         });
     </script>
